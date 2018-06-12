@@ -28,13 +28,34 @@ def main():
     import argparse
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group()
-    group.add_argument('-f', '--face', type=int, action='append')
-    group.add_argument('-d', '--faces-thru', type=int)
-    parser.add_argument('-n', '--number', required=True, type=int)
-    parser.add_argument('--drop-low', action='store_true')
-    parser.add_argument('--drop-high', action='store_true')
-    parser.add_argument('--trials', default=100000)
-    parser.add_argument('outfile')
+    group.add_argument(
+        '-f', '--face', type=int, action='append',
+        help='Specify each face value.  Repeat to add more faces.',
+    )
+    group.add_argument(
+        '-d', '--faces-thru', type=int,
+        help='Specify the max space value, and use faces 1 through FACES_THRU',
+    )
+    parser.add_argument(
+        '-n', '--number', required=True, type=int,
+        help='How many dice to roll each time.  The "N" in Nd6, e.g.',
+    )
+    parser.add_argument(
+        '--drop-low', action='store_true',
+        help='Whether to drop the lowest value from each roll',
+    )
+    parser.add_argument(
+        '--drop-high', action='store_true',
+        help='Whether to drop the highest value from each roll',
+    )
+    parser.add_argument(
+        '--trials', default=100000,
+        help='Number trials for producing the histogram (default: 100000)',
+    )
+    parser.add_argument(
+        'outfile',
+        help='Path to output image for the histogram (e.g. /tmp/foo.png)',
+    )
     parsed = parser.parse_args()
 
     faces = parsed.face or range(parsed.faces_thru)
