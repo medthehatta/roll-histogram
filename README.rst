@@ -4,7 +4,10 @@ Dice Rolls
 Roll dice and produce a histogram.
 
 
-Usage::
+Usage
+-----
+
+::
 
     usage: roll.py [-h] [-f FACE | -d FACES_THRU] -n NUMBER [--drop-low]
                    [--drop-high] [--trials TRIALS]
@@ -26,3 +29,20 @@ Usage::
       --drop-high           Whether to drop the highest value from each roll
       --trials TRIALS       Number trials for producing the histogram (default:
                             100000)
+
+
+Deployment
+----------
+
+Requires ``virtualenv``::
+
+    $ cd /path/to/roll-histogram
+    $ virtualenv my-venv
+    $ . ./my-venv/bin/activate
+    $ pip install -r ./requirements.txt
+
+To use::
+
+    $ cd /path/to/roll-histogram
+    $ . ./my-venv/bin/activate
+    $ ./roll.py ...
