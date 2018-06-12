@@ -31,6 +31,18 @@ Usage
                             100000)
 
 
+Examples
+--------
+
+4d6 drop low::
+
+    $ roll.py -n 4 -d 6 --drop-low /tmp/4d6dL.png
+
+4dF::
+
+    $ roll.py -n 4 -f -1 -f 0 -f 1 /tmp/fudge.png
+
+
 Deployment
 ----------
 
