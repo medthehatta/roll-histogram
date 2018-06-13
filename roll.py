@@ -49,7 +49,7 @@ def main():
         help='Whether to drop the highest value from each roll',
     )
     parser.add_argument(
-        '--trials', default=100000,
+        '--trials', default=100000, type=int,
         help='Number trials for producing the histogram (default: 100000)',
     )
     parser.add_argument(
