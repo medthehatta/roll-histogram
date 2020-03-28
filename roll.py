@@ -49,6 +49,13 @@ def main():
         help='Whether to drop the highest value from each roll',
     )
     parser.add_argument(
+        '--non-normalized', action='store_true',
+        help=(
+            'Whether the y axis should be a ratio (the default) or an '
+            'absolute number of counts'
+        ),
+    )
+    parser.add_argument(
         '--trials', default=100000, type=int,
         help='Number trials for producing the histogram (default: 100000)',
     )
@@ -63,6 +70,7 @@ def main():
     drop_low = parsed.drop_low
     drop_high = parsed.drop_high
     trials = parsed.trials
+    normalized = not parsed.non_normalized
 
     rolls = [
         sum(do_rolls(faces, number, drop_low, drop_high))
@@ -70,7 +78,10 @@ def main():
     ]
 
     series = pd.Series(rolls)
-    ax = series.hist()
+    if normalized:
+        ax = series.hist(density=1)
+    else:
+        ax = series.hist()
     ax.get_figure().savefig(parsed.outfile)
 
 
