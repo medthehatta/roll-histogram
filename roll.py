@@ -37,7 +37,7 @@ def main():
         help='Specify the max space value, and use faces 1 through FACES_THRU',
     )
     parser.add_argument(
-        '-n', '--number', required=True, type=int,
+        '-n', '--number', default=1, type=int,
         help='How many dice to roll each time.  The "N" in Nd6, e.g.',
     )
     parser.add_argument(
